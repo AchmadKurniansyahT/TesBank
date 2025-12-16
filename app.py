@@ -15,12 +15,8 @@ st.set_page_config(
 # LOAD MODEL
 # ==================================================
 @st.cache_resource
-def load_model():
-    with open("model_telemarketing_campaign.pkl", "rb") as f:
-        model_saved = pickle.load(f)
-    return model_saved
-
-model = load_model()
+with open("model_telemarketing_campaign.pkl", "rb") as f:
+    model_saved = pickle.load(f)
 
 # ==================================================
 # TITLE
@@ -126,8 +122,8 @@ input_df = pd.DataFrame([{
 st.divider()
 
 if st.button("🔍 Predict"):
-    pred_label = model.predict(input_df)[0]
-    pred_prob = model.predict_proba(input_df)[0][1]
+    pred_label = model_saved.predict(input_df)[0]
+    pred_prob = model_saved.predict_proba(input_df)[0][1]
 
     st.subheader("📌 Prediction Result")
 
@@ -135,6 +131,7 @@ if st.button("🔍 Predict"):
         st.success(f"✅ **Subscribe**\n\nProbability: **{pred_prob:.2%}**")
     else:
         st.error(f"❌ **Not Subscribe**\n\nProbability: **{pred_prob:.2%}**")
+
 
 
 
