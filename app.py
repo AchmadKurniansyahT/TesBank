@@ -1,8 +1,6 @@
 import streamlit as st
 import pandas as pd
 import pickle
-import imblearn
-import imblearn.pipeline
 
 # ==================================================
 # PAGE CONFIG (HARUS PALING ATAS)
@@ -131,6 +129,7 @@ if st.button("🔍 Predict"):
         st.success(f"✅ **Subscribe**\n\nProbability: **{pred_prob:.2%}**")
     else:
         st.error(f"❌ **Not Subscribe**\n\nProbability: **{pred_prob:.2%}**")
+
 
 
 
