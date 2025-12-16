@@ -14,7 +14,6 @@ st.set_page_config(
 # ==================================================
 # LOAD MODEL
 # ==================================================
-@st.cache_resource
 with open("model_telemarketing_campaign.pkl", "rb") as f:
     model_saved = pickle.load(f)
 
@@ -131,6 +130,7 @@ if st.button("🔍 Predict"):
         st.success(f"✅ **Subscribe**\n\nProbability: **{pred_prob:.2%}**")
     else:
         st.error(f"❌ **Not Subscribe**\n\nProbability: **{pred_prob:.2%}**")
+
 
 
 
